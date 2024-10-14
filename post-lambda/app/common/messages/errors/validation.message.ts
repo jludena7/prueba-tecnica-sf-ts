@@ -7,6 +7,12 @@ export const VALIDATION_MESSAGES = {
       message: `El campo '${field}' no debe ser vacio`,
     }) as BodyErrorInterface,
 
+  MAX_LENGTH: (field: string, maxLength: number) =>
+    ({
+      error: "MAX_LENGTH",
+      message: `El campo '${field}' no debe ser mayor a ${maxLength} caracteres`,
+    }) as BodyErrorInterface,
+
   IS_ARRAY: (field: string) =>
     ({
       error: "IS_ARRAY",

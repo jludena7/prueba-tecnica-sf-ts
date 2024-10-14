@@ -31,9 +31,11 @@ export class MovieTheaterController {
         body: JSON.stringify(response),
       };
     } catch (error) {
-      if (error instanceof PayloadError ||
-          error instanceof NotFoundError ||
-          error instanceof CallError) {
+      if (
+        error instanceof PayloadError ||
+        error instanceof NotFoundError ||
+        error instanceof CallError
+      ) {
         return {
           statusCode: error.httpCode,
           body: JSON.stringify(error.errorBody),
@@ -43,7 +45,7 @@ export class MovieTheaterController {
       logger.error(`MovieTheaterController | get | error:`, error);
       return {
         statusCode: HTTP_STATUS.CODE_500,
-        body: JSON.stringify((new UnknownError()).errorBody),
+        body: JSON.stringify(new UnknownError().errorBody),
       };
     }
   }

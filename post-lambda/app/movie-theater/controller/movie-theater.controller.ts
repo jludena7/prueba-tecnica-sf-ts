@@ -40,7 +40,7 @@ export class MovieTheaterController {
       logger.error(`MovieTheaterController | create | error:`, error);
       return {
         statusCode: HTTP_STATUS.CODE_500,
-        body: JSON.stringify((new UnknownError()).errorBody),
+        body: JSON.stringify(new UnknownError().errorBody),
       };
     }
   }

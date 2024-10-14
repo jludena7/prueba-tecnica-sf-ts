@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, MaxLength } from "class-validator";
 import { VALIDATION_MESSAGES } from "../../../common/messages/errors/validation.message";
 import { ScheduleProps } from "./interfaces/request.props";
 
@@ -9,6 +9,9 @@ export default class ScheduleDto {
   @IsNotEmpty({
     message: JSON.stringify(VALIDATION_MESSAGES.IS_NOT_EMPTY("inicio")),
   })
+  @MaxLength(19, {
+    message: JSON.stringify(VALIDATION_MESSAGES.MAX_LENGTH("inicio", 19)),
+  })
   inicio: string;
 
   @IsString({
@@ -16,6 +19,9 @@ export default class ScheduleDto {
   })
   @IsNotEmpty({
     message: JSON.stringify(VALIDATION_MESSAGES.IS_NOT_EMPTY("fin")),
+  })
+  @MaxLength(19, {
+    message: JSON.stringify(VALIDATION_MESSAGES.MAX_LENGTH("fin", 19)),
   })
   fin: string;
 

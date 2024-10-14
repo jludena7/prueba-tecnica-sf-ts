@@ -4,7 +4,7 @@ import {
   IsArray,
   IsNotEmpty,
   IsNumberString,
-  IsString,
+  IsString, MaxLength,
   ValidateIf,
   ValidateNested,
 } from "class-validator";
@@ -17,6 +17,9 @@ export default class MovieTheaterDto {
   })
   @IsNotEmpty({
     message: JSON.stringify(VALIDATION_MESSAGES.IS_NOT_EMPTY("direccion")),
+  })
+  @MaxLength(100, {
+    message: JSON.stringify(VALIDATION_MESSAGES.MAX_LENGTH("direccion", 100)),
   })
   direccion: string;
 
@@ -32,6 +35,9 @@ export default class MovieTheaterDto {
     },
   )
   @ValidateIf((o) => typeof o.numero_sala !== "number")
+  @MaxLength(3, {
+    message: JSON.stringify(VALIDATION_MESSAGES.MAX_LENGTH("tipo_sala", 3)),
+  })
   numero_sala: number;
 
   @IsString({
